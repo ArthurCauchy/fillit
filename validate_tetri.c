@@ -6,12 +6,173 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/11/30 16:17:56 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/11/30 20:50:40 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 #include "fillit.h"
+
+/*const t_tetridata g_tetridatas[] =
+{
+	{
+		.filecode = "#...#...#...#",
+		.code = "BBB"
+	},
+	{
+		.filecode = "#...#...##",
+		.code = "BBD"
+	},
+	{
+		.filecode = "#...###",
+		.code = "BDD"
+	},
+	{
+		.filecode = "##..#...#",
+		.code = "DGBB"
+	},
+	{
+		.filecode = "###.#",
+		.code = "BHDD"
+	},
+	{
+		.filecode = "#...#..##",
+		.code = "BBG"
+	},
+	{
+		.filecode = "#.###",
+		.code = "BGG"
+	},
+	{
+		.filecode = "####",
+		.code = "DDD"
+	},
+	{
+		.filecode = "##...#...#",
+		.code = "DBB"
+	},
+	{
+		.filecode = "###...#",
+		.code = "DDB"
+	},
+	{
+		.filecode = "##...##",
+		.code = "DBD"
+	},
+	{
+		.filecode = "##.##",
+		.code = "DGBG"
+	},
+	{
+		.filecode = "#..##..#",
+		.code = "BGB"
+	},
+	{
+		.filecode = "#...##...#",
+		.code = "BDB"								
+	},
+	{
+		.filecode = "#...##..#",
+		.code = "BDGB"
+	},
+	{
+		.filecode = "#..##...#",
+		.code = "BGDB"
+	},
+	{
+		.filecode = "#..###",
+		.code = "BGDD"
+	},
+	{
+		.filecode = "###..#",
+		.code = "DDGB"
+	},
+	{
+		.filecode = "##..##",
+		.code = "DBG"
+	}
+};*/
+
+static const t_tetridata g_tetridatas[] =
+{
+	{
+		.filecode = "#*...#*...#*...#",
+		.code = "BBB"
+	},
+	{
+		.filecode = "#*...#*...##",
+		.code = "BBD"
+	},
+	{
+		.filecode = "#*...###",
+		.code = "BDD"
+	},
+	{
+		.filecode = "##*..#*...#",
+		.code = "DGBB"
+	},
+	{
+		.filecode = "###*.#",
+		.code = "BHDD"
+	},
+	{
+		.filecode = "#*...#*..##",
+		.code = "BBG"
+	},
+	{
+		.filecode = "#*.###",
+		.code = "BGG"
+	},
+	{
+		.filecode = "####",
+		.code = "DDD"
+	},
+	{
+		.filecode = "##*...#*...#",
+		.code = "DBB"
+	},
+	{
+		.filecode = "###*...#",
+		.code = "DDB"
+	},
+	{
+		.filecode = "##*...##",
+		.code = "DBD"
+	},
+	{
+		.filecode = "##*.##",
+		.code = "DGBG"
+	},
+	{
+		.filecode = "#*..##*..#",
+		.code = "BGB"
+	},
+	{
+		.filecode = "#*...##*...#",
+		.code = "BDB"								
+	},
+	{
+		.filecode = "#*...##*..#",
+		.code = "BDGB"
+	},
+	{
+		.filecode = "#*..##*...#",
+		.code = "BGDB"
+	},
+	{
+		.filecode = "#*..###",
+		.code = "BGDD"
+	},
+	{
+		.filecode = "###*..#",
+		.code = "DDGB"
+	},
+	{
+		.filecode = "##*..##",
+		.code = "DBG"
+	}
+};
 
 /*
 ** Un genre de strcmp. Verifie que le code de tetri passe dans buff
@@ -20,16 +181,29 @@
 
 static char	*detect_tetri(char *buff, int start, t_tetridata tetri)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	endl_ok;
 
 	i = 0;
 	j = start;
-	while (tetri.filecode != '\0')
+	endl_ok = 1;
+	while (tetri.filecode[i] != '\0')
 	{
-		if (buff[j] == '\n')
-			--i;
-		else if (tetri.filecode[i] != buff[j])
+		if (tetri.filecode[i] == '*')
+		{
+			endl_ok = 1;
+			++i;
+			continue ;
+		}
+		if (endl_ok && buff[j] == '\n')
+		{
+			++j;
+			continue ;
+		}
+		if (tetri.filecode[i] == '#')
+			endl_ok = 0;
+		if (tetri.filecode[i] != buff[j])
 			return (NULL);
 		++j;
 		++i;
@@ -74,8 +248,8 @@ static int	find_start(char *buff)
 	{
 		if (buff[i] == '#')
 			return (i);
-		if (buff[i] != '.' && (buff[i] != '\n' ||
-					i == 4 || i == 9 || i == 14 || i == 19))
+		else if (buff[i] != '.' && (buff[i] != '\n' ||
+					(i != 4 && i != 9 && i != 14 && i != 19)))
 			return (-1);
 		++i;
 	}
@@ -107,7 +281,7 @@ static int	find_end(char *buff, int start)
 				end = i;
 		}
 		else if (buff[i] != '.' && (buff[i] != '\n' ||
-					i == 4 || i == 9 || i == 14 || i == 19))
+					(i != 4 && i != 9 && i != 14 && i != 19)))
 			return (-1);
 		++i;
 	}
@@ -121,16 +295,17 @@ static int	find_end(char *buff, int start)
 
 char		*validate_tetri(char *buff)
 {
-	int	i;
 	int	start;
+	int	end;
 
-	i = 0;
+	start = -2;
+	end = -2;
 	if (buff[4] != '\n'
 			|| buff[9] != '\n'
 			|| buff[14] != '\n'
 			|| buff[19] != '\n'
 			|| (start = find_start(buff)) == -1
-			|| find_end(buff, start) == -1)
+			|| (end = find_end(buff, start)) == -1)
 		return (NULL);
 	return (compare_code(start, buff));
 }
