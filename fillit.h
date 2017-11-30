@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/11/30 14:01:44 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/11/30 17:16:26 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ typedef struct	s_tetridata
 	char	*code;
 }				t_tetridata;
 
-const t_tetridata g_tetridatas[] =
+char			*validate_tetri(char *buff);
+
+/*const t_tetridata g_tetridatas[] =
 {
 	{
 		.filecode = "#...#...#...#",
@@ -63,7 +65,7 @@ const t_tetridata g_tetridatas[] =
 		.filecode = "##...#...#",
 		.code = "DBB"
 	},
-	{
+	{	
 		.filecode = "###...#",
 		.code = "DDB"
 	},
@@ -103,6 +105,6 @@ const t_tetridata g_tetridatas[] =
 		.filecode = "##..##",
 		.code = "DBG"
 	}
-};
+};*/
 
 #endif
