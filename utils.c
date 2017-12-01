@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 11:10:51 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 15:20:29 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@
 void	exit_error(void)
 {
 	ft_putendl("error");
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
-
 
 /*
 ** Print the usage of the then exit with EXIT_SUCCESS.
 */
 
-void    exit_usage(void)
+void	exit_usage(void)
 {
 	ft_putendl("usage : fillit <file.fillit>");
 	exit(EXIT_SUCCESS);
