@@ -6,11 +6,12 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 10:44:16 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 11:19:01 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdlib.h>
 
 static const t_tetridata g_tetridatas[] =
 {
