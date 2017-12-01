@@ -30,7 +30,17 @@ On pourrait faire une struct représentant la grille et contentant des infos uti
 
 ====================
 
+Pour le read : lire 16, puis 2, puis 16, puis 2.
+
+====================
+
 Fonctions à créer :
 - int	is_cell_empty(int pos, unsigned char *grid);
+
 - int	can_place_tetri(int pos, tetri_t tetri, unsigned char *grid);
+
 - int	widen_square(unsigned char *grid -> ou la struct grille);
+
+- int	isvalidtetri(tetri_list_t *lst, char *buff, char *buffsize);
+
+- int	import_tetri(tetri_list_t);
