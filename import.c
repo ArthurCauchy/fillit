@@ -6,7 +6,7 @@
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 15:09:15 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 15:21:55 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 #include "fillit.h"
 #include "libft.h"
 
-
 static int	open_file(char *filename)
-{	
+{
 	int fd;
 
 	fd = open(filename, 0);
@@ -30,7 +29,9 @@ static int	open_file(char *filename)
 
 static void	add_tetri(char *code, t_tetri **tab_tetri)
 {
-	static char	letter = 'A';
+	static char	letter
+		
+	letter = 'A';
 	if (!(*tab_tetri = (t_tetri*)malloc(sizeof(t_tetri))))
 		exit_error();
 	(*tab_tetri)->letter = letter;
