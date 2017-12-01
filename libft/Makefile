@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/01 13:27:05 by cpaquet          ###   ########.fr        #
+#    Updated: 2017/12/01 17:07:10 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ CFILES = $(SRC_DIR)/ft_memset.c \
 		 $(SRC_DIR)/ft_lstdel.c \
 		 $(SRC_DIR)/ft_lstiter.c \
 		 $(SRC_DIR)/ft_lstmap.c \
-		 $(SRC_DIR)/ft_swap.c
+		 $(SRC_DIR)/ft_swap.c \
+		 $(SRC_DIR)/ft_sqrt.c
 
 OFILES = ft_memset.o \
 		 ft_bzero.o \
@@ -152,7 +153,8 @@ OFILES = ft_memset.o \
 		 ft_lstdel.o \
 		 ft_lstiter.o \
 		 ft_lstmap.o \
-		 ft_swap.o
+		 ft_swap.o \
+		 ft_sqrt.o
 
 all: $(NAME)
 $(NAME):
