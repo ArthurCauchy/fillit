@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 17:50:14 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 18:40:35 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,21 @@ static int	min_square(int nb_tetri)
 
 t_grid		*init_grid(int nb_tetri)
 {
-	t_grid *grid;
+	t_grid	*grid;
 	int		i;
+	int		y;
 
 	if (!(grid = (t_grid*)malloc(sizeof(t_grid)))
 				|| !(grid->array = (char*)malloc(GRID_SIZE)))
 		exit_error();
 	grid->square_size = min_square(nb_tetri);
 	i = 0;
+	y = 0;
 	while (i < GRID_SIZE)
 	{
-		if ((i + 1) % grid->square_size == 0)
+		if ((i + y) % 12 == 0)
+			++y;
+		if (y > grid->square_size - 1 || (i - y * GRID_SIDE)>= grid->square_size)
 			grid->array[i] = BLOCKED_CHAR;
 		else
 			grid->array[i] = EMPTY_CHAR;
