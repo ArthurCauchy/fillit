@@ -6,7 +6,7 @@
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 14:03:50 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 15:09:15 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	lect(int fd, t_tetri **tab_tetri)
 	read_size = 20;
 	while ((really_read = read(fd, buffer, read_size)) > 0)
 	{
-		if (really_read != read_size
+		if (t == 26 || really_read != read_size
 				|| (read_size == 1 && buffer[0] != '\n'))
 			exit_error();
 		if (read_size == 20)
