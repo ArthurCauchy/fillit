@@ -6,7 +6,7 @@
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 16:12:32 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 19:33:01 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ static int	open_file(char *filename)
 
 static void	add_tetri(char *code, t_tetri **tab_tetri)
 {
-	static char	letter;
+	static char	letter = 'A';
 
-	letter = 'A';
 	if (!(*tab_tetri = (t_tetri*)malloc(sizeof(t_tetri))))
 		exit_error();
 	(*tab_tetri)->letter = letter;
@@ -68,7 +67,7 @@ static int	lect(int fd, t_tetri **tab_tetri)
 	return (t);
 }
 
-int		import(char *filename, t_tetri **tab_tetri)
+int			import(char *filename, t_tetri **tab_tetri)
 {
 	int fd;
 

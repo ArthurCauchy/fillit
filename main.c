@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 17:47:19 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 19:33:16 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ ft_putstr("test");
 		ft_putchar('\n');
 		i++;
 	}
-
-	ft_putnstr(grille->array, GRID_SIZE);
+	int k = 1;
+	while (k <= GRID_SIZE)
+	{
+		ft_putchar(grille->array[k - 1]);
+		if (k != 1 && k % 13 == 0)
+			ft_putchar('\n');
+		++k;
+	}
 	return (0);
 }

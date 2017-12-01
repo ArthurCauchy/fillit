@@ -6,9 +6,11 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 18:43:42 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 19:34:41 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 #include <stdlib.h>
 #include "fillit.h"
@@ -35,16 +37,16 @@ void		exit_usage(void)
 }
 
 /*
-** Compute the minimal square side size for nb_tetri 
+** Compute the minimal square side size for nb_tetri.
 */
 
 static int	min_square(int nb_tetri)
 {
 	int square_size;
-	
+
 	square_size = nb_tetri * 4;
 	while (ft_sqrt(square_size) == 0)
-			square_size++;
+		square_size++;
 	return (ft_sqrt(square_size));
 }
 
@@ -60,20 +62,23 @@ t_grid		*init_grid(int nb_tetri)
 	t_grid	*grid;
 	int		i;
 	int		y;
+
 	if (!(grid = (t_grid*)malloc(sizeof(t_grid)))
 				|| !(grid->array = (char*)malloc(GRID_SIZE)))
 		exit_error();
 	grid->square_size = min_square(nb_tetri);
+	printf("sqrt : %d\n", grid->square_size);
 	i = 0;
 	y = 0;
 	while (i < GRID_SIZE)
 	{
-		if ((i + y) % 12 == 0)
-			++y;
-		if (y > grid->square_size - 1 || (i - y * GRID_SIDE)>= grid->square_size)
+		if (y > grid->square_size - 1
+				|| (i - (y * GRID_SIDE)) >= grid->square_size)
 			grid->array[i] = BLOCKED_CHAR;
 		else
 			grid->array[i] = EMPTY_CHAR;
+		if (i != 0 && (i - (y * GRID_SIDE) == GRID_SIDE - 1))
+			++y;
 		++i;
 	}
 	return (grid);
