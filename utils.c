@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 15:20:29 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 16:52:50 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,15 @@ void	exit_usage(void)
 {
 	ft_putendl("usage : fillit <file.fillit>");
 	exit(EXIT_SUCCESS);
+}
+
+int		min_square(int t)
+{
+	int square_size;
+	
+	square_size = 0;
+	while (ft_sqrt(square_size) != 1)
+		square_size = t * 4;
+		t++;
+	return (ft_sqrt(square_size));
 }
