@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 18:40:35 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 18:43:42 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,9 @@ static int	min_square(int nb_tetri)
 {
 	int square_size;
 	
-	square_size = 0;
-	while (ft_sqrt(square_size) != 1)
-	{
-		square_size = nb_tetri * 4;
-		nb_tetri++;
-		ft_putnbr(square_size);
-	}
-	ft_putendl("min spq OK");
+	square_size = nb_tetri * 4;
+	while (ft_sqrt(square_size) == 0)
+			square_size++;
 	return (ft_sqrt(square_size));
 }
 
@@ -65,7 +60,6 @@ t_grid		*init_grid(int nb_tetri)
 	t_grid	*grid;
 	int		i;
 	int		y;
-
 	if (!(grid = (t_grid*)malloc(sizeof(t_grid)))
 				|| !(grid->array = (char*)malloc(GRID_SIZE)))
 		exit_error();
