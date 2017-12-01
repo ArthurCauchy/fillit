@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 16:55:05 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 17:17:28 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 # define GRID_SIDE 13
 # define GRID_SIZE (GRID_SIDE * GRID_SIDE)
 
+# define EMPTY_CHAR '.'
+# define BLOCKED_CHAR '@'
+
 typedef struct	s_grid_s
 {
-	char			*grid;
+	char			*array;
 	int				square_size;
 }				t_grid;
 
