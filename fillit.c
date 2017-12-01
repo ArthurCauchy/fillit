@@ -6,12 +6,13 @@
 /*   By: acauchy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:53:46 by acauchy           #+#    #+#             */
-/*   Updated: 2017/11/29 17:24:39 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/11/30 13:24:08 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
+#include "fillit.h"
 
 int	main(int argc, char **argv)
 {

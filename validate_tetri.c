@@ -6,93 +6,11 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/11/30 20:50:40 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 10:44:16 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
 #include "fillit.h"
-
-/*const t_tetridata g_tetridatas[] =
-{
-	{
-		.filecode = "#...#...#...#",
-		.code = "BBB"
-	},
-	{
-		.filecode = "#...#...##",
-		.code = "BBD"
-	},
-	{
-		.filecode = "#...###",
-		.code = "BDD"
-	},
-	{
-		.filecode = "##..#...#",
-		.code = "DGBB"
-	},
-	{
-		.filecode = "###.#",
-		.code = "BHDD"
-	},
-	{
-		.filecode = "#...#..##",
-		.code = "BBG"
-	},
-	{
-		.filecode = "#.###",
-		.code = "BGG"
-	},
-	{
-		.filecode = "####",
-		.code = "DDD"
-	},
-	{
-		.filecode = "##...#...#",
-		.code = "DBB"
-	},
-	{
-		.filecode = "###...#",
-		.code = "DDB"
-	},
-	{
-		.filecode = "##...##",
-		.code = "DBD"
-	},
-	{
-		.filecode = "##.##",
-		.code = "DGBG"
-	},
-	{
-		.filecode = "#..##..#",
-		.code = "BGB"
-	},
-	{
-		.filecode = "#...##...#",
-		.code = "BDB"								
-	},
-	{
-		.filecode = "#...##..#",
-		.code = "BDGB"
-	},
-	{
-		.filecode = "#..##...#",
-		.code = "BGDB"
-	},
-	{
-		.filecode = "#..###",
-		.code = "BGDD"
-	},
-	{
-		.filecode = "###..#",
-		.code = "DDGB"
-	},
-	{
-		.filecode = "##..##",
-		.code = "DBG"
-	}
-};*/
 
 static const t_tetridata g_tetridatas[] =
 {
@@ -150,7 +68,7 @@ static const t_tetridata g_tetridatas[] =
 	},
 	{
 		.filecode = "#*...##*...#",
-		.code = "BDB"								
+		.code = "BDB"
 	},
 	{
 		.filecode = "#*...##*..#",

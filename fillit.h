@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 10:15:22 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 11:03:14 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ char			*validate_tetri(char *buff);
 ** import.c
 */
 
-void			error(void);
-void			lect(int fd, t_tetri *tab_tetri);
-void			usage(void);
-void			import(t_tetri *tab_tetri);
-int				add_tetri(char *id, t_tetri);
+void			import(char *filename, t_tetri *tab_tetri);
+
+/*
+** utils.c
+*/
+
+void			exit_error(void);
+void			exit_usage(void);
 
 #endif

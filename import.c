@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   import.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/11/30 18:08:51 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 11:03:21 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cap.h"
+#include "fillit.h"
 
-int		ouv(void)
+static int	open_file(char *filename)
 {	
 	int fd;
-	
-	fd = open("sample.fillit", 0);
+
+	fd = open(filename, 0);
 	if (fd < 2)
 		return (0);
 	return (fd);
 }
 
-void		lect(int fd, t_tetri *tab_tetri)
+static void	lect(int fd, t_tetri *tab_tetri)
 {
-	char buffer[20];
-	int ret1;
-	int ret2;
-	char c;
-	size_t t;
+	char	buffer[20];
+	int		ret1;
+	int		ret2;
+	char	c;
+	size_t	t;
 
 	ret1 = 0;
 	ret2 = 0;
@@ -36,8 +36,8 @@ void		lect(int fd, t_tetri *tab_tetri)
 	while (ret1 != 0 && ret2 != 0)
 	{
 		c = '0';
-		ret1 = read (fd, buffer, 20);
-		ret2 = read (fd, &c, 1);
+		ret1 = read(fd, buffer, 20);
+		ret2 = read(fd, &c, 1);
 		if ((ret1 != 0 && ret1 != 20) || (ret2 != 0 && ret2 != 1) || c != '\n')
 			error();
 		if (validate_tetri(buffer) == NULL)
@@ -48,17 +48,16 @@ void		lect(int fd, t_tetri *tab_tetri)
 		error();
 }
 
-void	add_tetri(char* id, t_tetri tab_tetri)
+static void	add_tetri(char *code, t_tetri tab_tetri)
 {
-
-	tab_tetri.lettre = 'a';
-	tab_tetri.id = id;
+	tab_tetri->letter = 'a';
+	tab_tetri->code = code;
 }
 
-void	import(t_tetri *tab_tetri)
+void		import(char *filename, t_tetri *tab_tetri)
 {
 	int fd;
 
-	fd = (int)ouv;
+	fd = open_file();
 	lect(fd, tab_tetri);
 }

@@ -6,23 +6,12 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 09:55:48 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 10:49:33 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cap.h"
-
-void	error(void)
-{
-	ft_putstr("error\n");
-	exit(0);
-}
-
-void	usage(void)
-{
-	ft_putstr("usage : fillit <file.>\n");
-	exit(0);
-}
+#include "fillit.h"
+#include "libft.h"
 
 void	fill_zero(t_tetri *tab_tetri)
 {
@@ -32,27 +21,26 @@ void	fill_zero(t_tetri *tab_tetri)
 	while (0 < 26)
 	{
 		tab_tetri[y].lettre = '9';
-		tab_tetri[y].id = "999";
+		tab_tetri[y].code = "999";
 		y++;
 	}
 }
 
 int		main(int argc, char **argv)
 {
-	t_tetri tab_tetri[26];
-	size_t h;
+	t_tetri	*tab_tetri[26];
+	int		i;
 
-	h = 0;
-	argv[0] = NULL;
+	i = 0;
 	if (argc != 2)
-		usage();
-	import(tab_tetri);
-	while (h < 26)
+		exit_usage();
+	import(argv[1], tab_tetri);
+	while (i < 26)
 	{
-		ft_putchar(tab_tetri[h].lettre);
-		ft_putstr(tab_tetri[h].id);
+		ft_putchar(tab_tetri[i]->lettre);
+		ft_putstr(tab_tetri[i]->code);
 		ft_putchar('\n');
-		h++;
+		i++;
 	}
 	return (0);
 }
