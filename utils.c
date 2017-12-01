@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 17:20:43 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 17:50:14 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ static int	min_square(int nb_tetri)
 	
 	square_size = 0;
 	while (ft_sqrt(square_size) != 1)
+	{
 		square_size = nb_tetri * 4;
 		nb_tetri++;
+		ft_putnbr(square_size);
+	}
+	ft_putendl("min spq OK");
 	return (ft_sqrt(square_size));
 }
 
@@ -68,10 +72,11 @@ t_grid		*init_grid(int nb_tetri)
 	i = 0;
 	while (i < GRID_SIZE)
 	{
-		if (i % < grid->square_size)
+		if ((i + 1) % grid->square_size == 0)
 			grid->array[i] = BLOCKED_CHAR;
 		else
 			grid->array[i] = EMPTY_CHAR;
+		++i;
 	}
 	return (grid);
 }
