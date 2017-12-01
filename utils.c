@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 16:52:43 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 17:01:08 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ void	exit_usage(void)
 {
 	ft_putendl("usage : fillit <file.fillit>");
 	exit(EXIT_SUCCESS);
+}
+
+/*
+** Compute the minimal square side size for nb_tetri 
+*/
+
+int		min_square(int nb_tetri)
+{
+	int square_size;
+	
+	square_size = 0;
+	while (ft_sqrt(square_size) != 1)
+		square_size = nb_tetri * 4;
+		nb_tetri++;
+	return (ft_sqrt(square_size));
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 15:39:44 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 16:12:32 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static void	add_tetri(char *code, t_tetri **tab_tetri)
 	++letter;
 }
 
-static void	lect(int fd, t_tetri **tab_tetri)
+static int	lect(int fd, t_tetri **tab_tetri)
 {
 	char	buffer[20];
 	int		read_size;
 	int		really_read;
-	size_t	t;
+	int		t;
 	char	*code;
 
 	t = 0;
@@ -58,20 +58,20 @@ static void	lect(int fd, t_tetri **tab_tetri)
 		{
 			if (!(code = validate_tetri(buffer)))
 				exit_error();
-			add_tetri(code, &tab_tetri[t]);
-			++t;
+			add_tetri(code, &tab_tetri[t++]);
 		}
 		read_size = (read_size == 20) ? 1 : 20;
 	}
 	tab_tetri[t] = NULL;
 	if (really_read < 0 || read_size == 20)
 		exit_error();
+	return (t);
 }
 
-void		import(char *filename, t_tetri **tab_tetri)
+int		import(char *filename, t_tetri **tab_tetri)
 {
 	int fd;
 
 	fd = open_file(filename);
-	lect(fd, tab_tetri);
+	return (lect(fd, tab_tetri));
 }
