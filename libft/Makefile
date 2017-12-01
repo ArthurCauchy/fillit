@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2017/11/29 10:04:10 by acauchy          ###   ########.fr        #
+#    Updated: 2017/12/01 11:58:26 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ CFILES = $(SRC_DIR)/ft_memset.c \
 		 $(SRC_DIR)/ft_tolower.c \
 		 $(SRC_DIR)/ft_putchar.c \
 		 $(SRC_DIR)/ft_putstr.c \
+		 $(SRC_DIR)/ft_putnstr.c \
 		 $(SRC_DIR)/ft_putendl.c \
 		 $(SRC_DIR)/ft_putnbr.c \
 		 $(SRC_DIR)/ft_puthex.c \
@@ -135,6 +136,7 @@ OFILES = ft_memset.o \
 		 ft_tolower.o \
 		 ft_putchar.o \
 		 ft_putstr.o \
+		 ft_putnstr.o \
 		 ft_putendl.o \
 		 ft_putnbr.o \
 		 ft_puthex.o \
