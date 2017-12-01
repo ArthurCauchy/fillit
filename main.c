@@ -6,39 +6,23 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 11:55:29 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 14:03:48 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
-#include <stdlib.h>
-
-void	fill_zero(t_tetri **tab_tetri)
-{	
-	int i;
-
-	i = 0;
-	while (i < 26)
-	{
-		tab_tetri[i] = (t_tetri*)malloc(sizeof(t_tetri));
-		tab_tetri[i]->letter = '9';
-		tab_tetri[i]->code = "999";
-		i++;
-	}
-}
 
 int		main(int argc, char **argv)
 {
-	t_tetri	*tab_tetri[26];
+	t_tetri	*tab_tetri[27];
 	int		i;
 
 	i = 0;
 	if (argc != 2)
 		exit_usage();
-	fill_zero(tab_tetri);
 	import(argv[1], tab_tetri);
-	while (i < 26)
+	while (tab_tetri[i])
 	{
 		ft_putstr("main:");
 		ft_putchar(tab_tetri[i]->letter);
