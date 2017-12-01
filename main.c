@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 11:42:02 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/01 11:55:29 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		main(int argc, char **argv)
 	import(argv[1], tab_tetri);
 	while (i < 26)
 	{
+		ft_putstr("main:");
 		ft_putchar(tab_tetri[i]->letter);
 		ft_putchar(' ');
 		ft_putstr(tab_tetri[i]->code);
