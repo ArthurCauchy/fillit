@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 15:38:09 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/01 15:31:35 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,29 +100,32 @@ static const t_tetridata g_tetridatas[] =
 
 static char	*detect_tetri(char *buff, int start, t_tetridata tetri)
 {
+	int		i;
+	int		j;
 	char	endl_ok;
 
-	buff += start;
+	i = 0;
+	j = start;
 	endl_ok = 1;
-	while (*tetri.filecode)
+	while (tetri.filecode[i] != '\0')
 	{
-		if (*tetri.filecode == '*')
+		if (tetri.filecode[i] == '*')
 		{
 			endl_ok = 1;
-			++tetri.filecode;
+			++i;
 			continue ;
 		}
-		if (endl_ok && *buff == '\n')
+		if (endl_ok && buff[j] == '\n')
 		{
-			++buff;
+			++j;
 			continue ;
 		}
-		if (*tetri.filecode == '#')
+		if (tetri.filecode[i] == '#')
 			endl_ok = 0;
-		if (*tetri.filecode != *buff)
+		if (tetri.filecode[i] != buff[j])
 			return (NULL);
-		++buff;
-		++tetri.filecode;
+		++j;
+		++i;
 	}
 	return (tetri.code);
 }
