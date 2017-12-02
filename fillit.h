@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 20:35:19 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 22:23:48 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # define EMPTY_CHAR '.'
 # define BLOCKED_CHAR '@'
-# define TMP_CHAR '+'
 
 typedef struct	s_grid_s
 {
@@ -58,6 +57,7 @@ void			exit_error(void);
 void			exit_usage(void);
 t_grid			*init_grid(int nb_tetri);
 void			widen_square(t_grid *grid);
+void			clear_square(t_grid *grid);
 
 /*
 ** output.c

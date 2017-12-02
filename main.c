@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/02 20:34:59 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 22:28:20 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int		main(int argc, char **argv)
 		ft_putchar('\n');
 		i++;
 	}
-	resolve(grille, tab_tetri, nb_tetri);
+	ft_putstr("start square_side : ");
+	ft_putnbr(grille->square_side);
 	ft_putchar('\n');
+	resolve(grille, tab_tetri, nb_tetri);
 	print_grid(grille);
 	print_result(grille);
 	return (0);

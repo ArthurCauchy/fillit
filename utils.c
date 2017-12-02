@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 19:50:48 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 22:20:25 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,23 @@ void		widen_square(t_grid *grid)
 	while (grid->array[i] != '.')
 		grid->array[i++] = '.';
 	grid->square_side++;
+}
+
+void	clear_square(t_grid *grid)
+{
+	int	i;
+	int	y;
+
+	i = 0;
+	y = 0;
+	while (y < grid->square_side && i < GRID_SIZE)
+	{
+		grid->array[i] = EMPTY_CHAR;
+		if (i != 0 && (i - (y * GRID_SIDE) == grid->square_side - 1))
+		{
+			++y;
+			i += GRID_SIDE - grid->square_side;
+		}
+		++i;
+	}
 }
