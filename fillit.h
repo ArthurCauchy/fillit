@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 17:39:12 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/02 14:07:47 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct	s_grid_s
 {
 	char			*array;
-	int				square_size;
+	int				square_side;
 }				t_grid;
 
 typedef struct	s_tetri

@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/01 19:33:16 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 14:16:36 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ ft_putstr("test");
 		i++;
 	}
 	print_grid(grille);
+	print_result(grille);
 	return (0);
 }
