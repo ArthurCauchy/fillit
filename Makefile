@@ -6,37 +6,50 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/02 14:30:45 by acauchy          ###   ########.fr        #
+#    Updated: 2017/12/02 18:40:33 by cpaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: libft
-
-CC = clang
-
-FLAGS = -Wall -Wextra -Werror
+.PHONY: libft fillit all clean fclean re
 
 NAME = fillit
 
-SRCS = main.c import.c utils.c output.c resolve.c validate_tetri.c
+SRC_NAME =	main.c \
+		import.c \
+		utils.c \
+		output.c \
+		resolve.c validate_tetri.c
+SRC_PATH = ./
 
-OBJS = main.o import.o utils.o output.o resolve.o validate_tetri.o
+OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ_PATH = ./o/
+
+SRCS = $(addprefix $(SRC_PATH), $(SRC_NAME))
+OBJS = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
+
+LDFLAGS = -Llibft
+LDLIBS = -lft
+CPPFLAGS = -I./libft
 
 all: $(NAME)
 
-libft:
-	make -C libft/ fclean && make -C libft/
+$(NAME): $(OBJS)
+	make -C libft
+	$(CC) $(LDFLAGS) $(LDLIBS) $^ -o $@
 
-$(OBJS):
-	$(CC) -c $(SRCS) $(FLAGS) -I./libft
-
-$(NAME): libft $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) -L./libft/ -lft
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	 @mkdir $(OBJ_PATH) 2> /dev/null || true
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(OBJS)
+	rm -Rf $(OBJ_PATH)
+	make clean -C libft
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C libft
 
 re: fclean all
