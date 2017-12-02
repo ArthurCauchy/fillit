@@ -6,7 +6,7 @@
 /*   By: cpaquet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:43:53 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/02 14:16:36 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 20:34:59 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		main(int argc, char **argv)
 		exit_usage();
 	nb_tetri = import(argv[1], tab_tetri);
 	grille = init_grid(nb_tetri);
-ft_putstr("test");
 	while (tab_tetri[i])
 	{
 		ft_putstr("main:");
@@ -37,6 +36,8 @@ ft_putstr("test");
 		ft_putchar('\n');
 		i++;
 	}
+	resolve(grille, tab_tetri, nb_tetri);
+	ft_putchar('\n');
 	print_grid(grille);
 	print_result(grille);
 	return (0);

@@ -6,10 +6,11 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 15:38:09 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 20:15:47 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "fillit.h"
 #include <stdlib.h>
 
@@ -101,15 +102,17 @@ static const t_tetridata g_tetridatas[] =
 static char	*detect_tetri(char *buff, int start, t_tetridata tetri)
 {
 	char	endl_ok;
+	char	*filecode_ptr;
 
 	buff += start;
 	endl_ok = 1;
-	while (*tetri.filecode)
+	filecode_ptr = tetri.filecode;
+	while (*filecode_ptr)
 	{
-		if (*tetri.filecode == '*')
+		if (*filecode_ptr == '*')
 		{
 			endl_ok = 1;
-			++tetri.filecode;
+			++filecode_ptr;
 			continue ;
 		}
 		if (endl_ok && *buff == '\n')
@@ -117,14 +120,14 @@ static char	*detect_tetri(char *buff, int start, t_tetridata tetri)
 			++buff;
 			continue ;
 		}
-		if (*tetri.filecode == '#')
+		if (*filecode_ptr == '#')
 			endl_ok = 0;
-		if (*tetri.filecode != *buff)
+		if (*filecode_ptr != *buff)
 			return (NULL);
 		++buff;
-		++tetri.filecode;
+		++filecode_ptr;
 	}
-	return (tetri.code);
+	return (ft_strdup(tetri.code));
 }
 
 /*
