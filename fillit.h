@@ -55,6 +55,13 @@ int				import(char *filename, t_tetri **tab_tetri);
 
 void			exit_error(void);
 void			exit_usage(void);
-t_grid		*init_grid(int nb_tetri);
+t_grid			*init_grid(int nb_tetri);
+
+/*
+** output.c
+*/
+
+void			print_grid(t_grid *grid);
+void			print_result(t_grid *grid);
 
 #endif

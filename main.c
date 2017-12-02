@@ -37,13 +37,6 @@ ft_putstr("test");
 		ft_putchar('\n');
 		i++;
 	}
-	int k = 1;
-	while (k <= GRID_SIZE)
-	{
-		ft_putchar(grille->array[k - 1]);
-		if (k != 1 && (k % GRID_SIDE) == 0)
-			ft_putchar('\n');
-		++k;
-	}
+	print_grid(grille);
 	return (0);
 }
