@@ -41,7 +41,7 @@ ft_putstr("test");
 	while (k <= GRID_SIZE)
 	{
 		ft_putchar(grille->array[k - 1]);
-		if (k != 1 && k % 13 == 0)
+		if (k != 1 && (k % GRID_SIDE) == 0)
 			ft_putchar('\n');
 		++k;
 	}
