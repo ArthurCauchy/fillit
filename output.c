@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 14:15:16 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 14:25:57 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 14:34:49 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_result(t_grid *grid)
 
 	i = 0;
 	y = 0;
-	while (y < grid->square_side - 1 && i < GRID_SIZE)
+	while (y < grid->square_side && i < GRID_SIZE)
 	{
 		ft_putchar(grid->array[i]);
 		if (i != 0 && (i - (y * GRID_SIDE) == grid->square_side - 1))
