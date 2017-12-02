@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 14:25:56 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/02 19:20:27 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,27 @@ t_grid		*init_grid(int nb_tetri)
 		++i;
 	}
 	return (grid);
+}
+
+void	widen_square(t_grid *grid)
+{
+	int y;
+	int i;
+
+	y = 0;
+	while (y <= grid->square_side)
+	{
+		grid->array[grid->square_side + (GRID_SIDE * y)] = '.';
+		
+		ft_putchar('\n');
+		ft_putchar(grid->array[grid->square_side + (GRID_SIDE * y)]);
+		ft_putchar('\n');
+		ft_putnbr(grid->square_side + (GRID_SIDE * y));
+		ft_putchar('\n');
+		
+		y++;
+	}
+	i = GRID_SIDE * (y - 1);
+	while (grid->array[i] != '.')
+		grid->array[i++] = '.';
 }
