@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/02 18:40:33 by cpaquet          ###   ########.fr        #
+#    Updated: 2017/12/03 15:47:02 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,10 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 
 clean:
 	rm -Rf $(OBJ_PATH)
-	make clean -C libft
+	make -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C libft
+	make -C libft fclean
 
 re: fclean all
