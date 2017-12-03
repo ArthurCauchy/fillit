@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 22:23:48 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/03 19:54:48 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void			print_result(t_grid *grid);
 ** resolve.c
 */
 
-void			resolve(t_grid *grid, t_tetri **tab_tetri, int nb_tetri);
+void			resolve(t_grid *grid, t_tetri **tab_tetri);
 
 #endif

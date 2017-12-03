@@ -6,11 +6,35 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:52:12 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 22:24:28 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/03 20:07:42 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 #include "fillit.h"
+
+static void	remove_tetri(t_grid *grid, t_tetri *tetri, int pos)
+{
+	int	i;
+
+	i = -1;
+	while (1)
+	{
+		grid->array[pos] = EMPTY_CHAR;
+		++i;
+		if (!tetri->code[i])
+			return ;
+		if (tetri->code[i] == 'D')
+			++pos;
+		else if (tetri->code[i] == 'B')
+			pos += GRID_SIDE;
+		else if (tetri->code[i] == 'H')
+			pos -= GRID_SIDE;
+		else
+			--pos;
+	}
+}
 
 static int	try_place(t_grid *grid, t_tetri *tetri, int i, int pos)
 {
@@ -41,7 +65,7 @@ static int	try_place(t_grid *grid, t_tetri *tetri, int i, int pos)
 	return (1);
 }
 
-static int	search_solution(t_grid *grid, t_tetri **tab_tetri)
+/*static int	search_solution(t_grid *grid, t_tetri **tab_tetri)
 {
 	int	i;
 	int	pos;
@@ -50,13 +74,14 @@ static int	search_solution(t_grid *grid, t_tetri **tab_tetri)
 	i = 0;
 	pos = 0;
 	y = 0;
-	while (y < grid->square_side && pos < GRID_SIZE)
+	while (y < grid->square_side)
 	{
 		if (try_place(grid, tab_tetri[i], -1, pos))
 		{
 			++i;
 			if (!tab_tetri[i])
 				return (1);
+			pos = -1;
 		}
 		if (pos != 0 && (pos - (y * GRID_SIDE) == grid->square_side - 1))
 		{
@@ -66,25 +91,23 @@ static int	search_solution(t_grid *grid, t_tetri **tab_tetri)
 		++pos;
 	}
 	return (0);
-}
+}*/
 
-static void	swap_tetri(t_tetri **a, t_tetri **b)
-{
-	t_tetri	*tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-static int	backtracking(t_grid *grid, t_tetri **tab_tetri, int i, int n)
+/*static int	backtracking(t_grid *grid, t_tetri **tab_tetri, int i, int n)
 {
 	int	j;
 
 	if (i == n)
 	{
+		int j = 0;
+		while (tab_tetri[j])
+		{
+			printf("%c", tab_tetri[j++]->letter);
+		}
+		printf("\n");
 		if (search_solution(grid, tab_tetri))
 			return (1);
+		print_grid(grid);
 		clear_square(grid);
 	}
 	else
@@ -100,15 +123,44 @@ static int	backtracking(t_grid *grid, t_tetri **tab_tetri, int i, int n)
 		}
 	}
 	return (0);
+}*/
+
+static int	search_solution(t_grid *grid, t_tetri **tab_tetri, int i)
+{
+	int	pos;
+	int	y;
+
+	if (!tab_tetri[i])
+		return (1);
+	pos = 0;
+	y = 0;
+	while (pos <= (grid->square_side - 1) * GRID_SIDE + grid->square_side - 1)
+	{
+		//printf("%c : %d\n", tab_tetri[i]->letter, pos);
+		if (try_place(grid, tab_tetri[i], -1, pos))
+		{
+			if (search_solution(grid, tab_tetri, i + 1))
+				return (1);
+			remove_tetri(grid, tab_tetri[i], pos);
+		}
+		if (pos != 0 && (pos - (y * GRID_SIDE) == grid->square_side - 1))
+		{
+			++y;
+			pos += GRID_SIDE - grid->square_side;
+		}
+		++pos;
+	}
+	//printf("square failed. pos = %d\n", pos);
+	return (0);
 }
 
-void		resolve(t_grid *grid, t_tetri **tab_tetri, int nb_tetri)
+void		resolve(t_grid *grid, t_tetri **tab_tetri)
 {
-	backtracking(grid, tab_tetri, 0, nb_tetri - 1);
 	while (grid->square_side <= GRID_SIDE
-			&& !(backtracking(grid, tab_tetri, 0, nb_tetri - 1)))
+			&& !(search_solution(grid, tab_tetri, 0)))
 	{
 		clear_square(grid);
+		printf("square_side ++");
 		widen_square(grid);
 	}
 	if (grid->square_side == GRID_SIDE)
