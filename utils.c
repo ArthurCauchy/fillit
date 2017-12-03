@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 22:20:25 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/03 17:54:22 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,18 @@
 ** Print 'error' then exit with EXIT_FAILURE.
 */
 
-void		exit_error(void)
+void		exit_error(t_tetri **tab_tetri, t_grid *grille)
 {
+	int i;
+
+	i = 0;
+	while (i < 26)
+	{
+		free (tab_tetri[i]->code);
+		free (tab_tetri[i]);
+		i++;
+	}
+	free (grille);
 	ft_putendl("error");
 	exit(EXIT_FAILURE);
 }
@@ -63,7 +73,7 @@ t_grid		*init_grid(int nb_tetri)
 
 	if (!(grid = (t_grid*)malloc(sizeof(t_grid)))
 			|| !(grid->array = (char*)malloc(GRID_SIZE)))
-		exit_error();
+		exit_error(NULL, grid);
 	grid->square_side = min_square(nb_tetri);
 	i = 0;
 	y = 0;

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:52:12 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 22:24:28 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/03 17:56:04 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,5 @@ void		resolve(t_grid *grid, t_tetri **tab_tetri, int nb_tetri)
 		widen_square(grid);
 	}
 	if (grid->square_side == GRID_SIDE)
-		exit_error();
+		exit_error(tab_tetri, grid);
 }
