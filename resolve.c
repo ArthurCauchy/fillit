@@ -6,11 +6,9 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:52:12 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/04 13:08:58 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/04 15:15:47 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 #include "fillit.h"
 
@@ -65,66 +63,6 @@ static int	try_place(t_grid *grid, t_tetri *tetri, int i, int pos)
 	return (1);
 }
 
-/*static int	search_solution(t_grid *grid, t_tetri **tab_tetri)
-{
-	int	i;
-	int	pos;
-	int	y;
-
-	i = 0;
-	pos = 0;
-	y = 0;
-	while (y < grid->square_side)
-	{
-		if (try_place(grid, tab_tetri[i], -1, pos))
-		{
-			++i;
-			if (!tab_tetri[i])
-				return (1);
-			pos = -1;
-		}
-		if (pos != 0 && (pos - (y * GRID_SIDE) == grid->square_side - 1))
-		{
-			++y;
-			pos += GRID_SIDE - grid->square_side;
-		}
-		++pos;
-	}
-	return (0);
-}*/
-
-/*static int	backtracking(t_grid *grid, t_tetri **tab_tetri, int i, int n)
-{
-	int	j;
-
-	if (i == n)
-	{
-		int j = 0;
-		while (tab_tetri[j])
-		{
-			printf("%c", tab_tetri[j++]->letter);
-		}
-		printf("\n");
-		if (search_solution(grid, tab_tetri))
-			return (1);
-		print_grid(grid);
-		clear_square(grid);
-	}
-	else
-	{
-		j = i;
-		while (j <= n)
-		{
-			swap_tetri(tab_tetri + i, tab_tetri + j);
-			if (backtracking(grid, tab_tetri, i + 1, n))
-				return (1);
-			swap_tetri(tab_tetri + i, tab_tetri + j);
-			++j;
-		}
-	}
-	return (0);
-}*/
-
 static int	search_solution(t_grid *grid, t_tetri **tab_tetri, int i)
 {
 	int	pos;
@@ -136,7 +74,6 @@ static int	search_solution(t_grid *grid, t_tetri **tab_tetri, int i)
 	y = 0;
 	while (pos <= (grid->square_side - 1) * GRID_SIDE + grid->square_side - 1)
 	{
-		//printf("%c : %d\n", tab_tetri[i]->letter, pos);
 		if (try_place(grid, tab_tetri[i], -1, pos))
 		{
 			if (search_solution(grid, tab_tetri, i + 1))
@@ -150,7 +87,6 @@ static int	search_solution(t_grid *grid, t_tetri **tab_tetri, int i)
 		}
 		++pos;
 	}
-	//printf("square failed. pos = %d\n", pos);
 	return (0);
 }
 
@@ -158,10 +94,7 @@ void		resolve(t_grid *grid, t_tetri **tab_tetri)
 {
 	while (grid->square_side <= GRID_SIDE
 			&& !(search_solution(grid, tab_tetri, 0)))
-	{
-		clear_square(grid);
 		widen_square(grid);
-	}
 	if (grid->square_side == GRID_SIDE)
 		exit_error(tab_tetri, grid);
 }

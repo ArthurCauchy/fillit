@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/03 17:54:22 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/04 15:17:51 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,24 @@
 ** Print 'error' then exit with EXIT_FAILURE.
 */
 
-void		exit_error(t_tetri **tab_tetri, t_grid *grille)
+void		exit_error(t_tetri **tab_tetri, t_grid *grid)
 {
 	int i;
 
 	i = 0;
-	while (i < 26)
+	while (tab_tetri && tab_tetri[i] != NULL)
 	{
-		free (tab_tetri[i]->code);
-		free (tab_tetri[i]);
+		free(tab_tetri[i]->code);
+		free(tab_tetri[i]);
 		i++;
 	}
-	free (grille);
+	if (grid)
+	{
+		if (grid->array)
+			free(grid->array);
+		free(grid);
+	}
+	free(grid);
 	ft_putendl("error");
 	exit(EXIT_FAILURE);
 }
@@ -40,7 +46,7 @@ void		exit_error(t_tetri **tab_tetri, t_grid *grille)
 
 void		exit_usage(void)
 {
-	ft_putendl("usage : fillit <file.fillit>");
+	ft_putendl("usage: fillit file.fillit");
 	exit(EXIT_SUCCESS);
 }
 
@@ -91,38 +97,26 @@ t_grid		*init_grid(int nb_tetri)
 	return (grid);
 }
 
+/*
+** Clear the square and widen it by 1.
+*/
+
 void		widen_square(t_grid *grid)
-{
-	int y;
-	int i;
-
-	y = 0;
-	while (y <= grid->square_side)
-	{
-		grid->array[grid->square_side + (GRID_SIDE * y)] = '.';
-		y++;
-	}
-	i = GRID_SIDE * (y - 1);
-	while (grid->array[i] != '.')
-		grid->array[i++] = '.';
-	grid->square_side++;
-}
-
-void	clear_square(t_grid *grid)
 {
 	int	i;
 	int	y;
 
 	i = 0;
 	y = 0;
-	while (y < grid->square_side && i < GRID_SIZE)
+	while (y <= grid->square_side + 1)
 	{
 		grid->array[i] = EMPTY_CHAR;
-		if (i != 0 && (i - (y * GRID_SIDE) == grid->square_side - 1))
+		if (i != 0 && (i - (y * GRID_SIDE) == grid->square_side))
 		{
 			++y;
-			i += GRID_SIDE - grid->square_side;
+			i += GRID_SIDE - grid->square_side - 1;
 		}
 		++i;
 	}
+	grid->square_side++;
 }

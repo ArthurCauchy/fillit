@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/03 16:00:35 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/04 14:48:06 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,8 @@ static char	*detect_tetri(char *buff, int start, t_tetridata tetri)
 		}
 		if (*filecode_ptr == '#')
 			endl_ok = 0;
-		if (*filecode_ptr != *buff)
+		if (*(filecode_ptr++) != *(buff++))
 			return (NULL);
-		++buff;
-		++filecode_ptr;
 	}
 	return (ft_strdup(tetri.code));
 }
@@ -135,7 +133,7 @@ static char	*detect_tetri(char *buff, int start, t_tetridata tetri)
 ** Renvoie le code du tetrimino trouve avec celui possible
 ** NULL = error
 **
-** 19 = nombre de tetri possibles renseignes dans le tableau statique
+** 19 = nombre de tetridatas (var globale)
 */
 
 static char	*compare_code(int start, char *buff)
