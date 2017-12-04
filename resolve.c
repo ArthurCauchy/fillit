@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:52:12 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/03 20:10:15 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/04 13:08:58 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,6 @@ void		resolve(t_grid *grid, t_tetri **tab_tetri)
 			&& !(search_solution(grid, tab_tetri, 0)))
 	{
 		clear_square(grid);
-		printf("square_side ++");
 		widen_square(grid);
 	}
 	if (grid->square_side == GRID_SIDE)
