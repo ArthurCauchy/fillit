@@ -6,16 +6,14 @@
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/04 15:18:18 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/04 15:49:20 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "fillit.h"
-#include "libft.h"
 
 static int	open_file(char *filename)
 {
