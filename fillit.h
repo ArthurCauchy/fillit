@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/03 19:54:48 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/03 20:10:43 by cpaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				import(char *filename, t_tetri **tab_tetri);
 ** utils.c
 */
 
-void			exit_error(void);
+void			exit_error(t_tetri **tab_tetri, t_grid *grille);
 void			exit_usage(void);
 t_grid			*init_grid(int nb_tetri);
 void			widen_square(t_grid *grid);
