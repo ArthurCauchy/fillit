@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/08 14:17:41 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/08 16:01:44 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void		widen_square(t_grid *grid)
 
 	i = 0;
 	y = 0;
-	while (y <= grid->square_side + 1)
+	while (y <= grid->square_side)
 	{
 		grid->array[i] = EMPTY_CHAR;
 		if (i != 0 && (i - (y * GRID_SIDE) == grid->square_side))

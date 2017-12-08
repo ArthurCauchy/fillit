@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/08 14:30:33 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/08 15:27:44 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			widen_square(t_grid *grid);
 ** output.c
 */
 
+void			print_grid(t_grid *grid);
 void			print_result(t_grid *grid);
 
 /*
