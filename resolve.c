@@ -6,11 +6,15 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:52:12 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/04 15:15:47 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/05 14:17:15 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Remove a given tetri from the grid.
+*/
 
 static void	remove_tetri(t_grid *grid, t_tetri *tetri, int pos)
 {
@@ -33,6 +37,12 @@ static void	remove_tetri(t_grid *grid, t_tetri *tetri, int pos)
 			--pos;
 	}
 }
+
+/*
+** Try to place a tetri at the given position in the grid.
+** i is an index iterating over tetri->code via recursive calls.
+** Return : 1 = could place the entire tetri. 0 = ...could not.
+*/
 
 static int	try_place(t_grid *grid, t_tetri *tetri, int i, int pos)
 {
@@ -63,6 +73,12 @@ static int	try_place(t_grid *grid, t_tetri *tetri, int i, int pos)
 	return (1);
 }
 
+/*
+** Search a solution for the actual square size.
+** Stops at the 1st solution found and return 1.
+** Return 0 if no solution is found.
+*/
+
 static int	search_solution(t_grid *grid, t_tetri **tab_tetri, int i)
 {
 	int	pos;
@@ -89,6 +105,10 @@ static int	search_solution(t_grid *grid, t_tetri **tab_tetri, int i)
 	}
 	return (0);
 }
+
+/*
+** Find a solution.
+*/
 
 void		resolve(t_grid *grid, t_tetri **tab_tetri)
 {

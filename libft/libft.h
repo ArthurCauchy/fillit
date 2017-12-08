@@ -6,12 +6,12 @@
 /*   By: acauchy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 10:12:28 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/01 17:40:46 by cpaquet          ###   ########.fr       */
+/*   Updated: 2017/12/07 15:19:22 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBFT_H
-# define __LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <string.h>
 

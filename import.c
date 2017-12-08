@@ -6,22 +6,19 @@
 /*   By: cpaquet <cpaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:54:17 by cpaquet           #+#    #+#             */
-/*   Updated: 2017/12/04 15:49:20 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/08 14:17:07 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "fillit.h"
 
 static int	open_file(char *filename)
 {
 	int fd;
 
-	fd = open(filename, 0);
+	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		return (-1);
 	return (fd);
 }
 
@@ -69,6 +66,7 @@ int			import(char *filename, t_tetri **tab_tetri)
 {
 	int fd;
 
-	fd = open_file(filename);
+	if ((fd = open_file(filename)) == -1)
+		exit_error(NULL, NULL);
 	return (lect(fd, tab_tetri));
 }

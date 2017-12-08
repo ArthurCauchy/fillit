@@ -6,13 +6,11 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/04 14:48:06 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/08 14:18:03 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
-#include <stdlib.h>
 
 static const t_tetridata g_tetridatas[] =
 {

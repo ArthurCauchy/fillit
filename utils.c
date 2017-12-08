@@ -6,13 +6,11 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 10:22:17 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/04 15:51:22 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/08 14:17:41 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "fillit.h"
-#include "libft.h"
 
 /*
 ** Print 'error' then exit with EXIT_FAILURE.
@@ -25,13 +23,16 @@ void		exit_error(t_tetri **tab_tetri, t_grid *grid)
 	i = 0;
 	while (tab_tetri && tab_tetri[i] != NULL)
 	{
-		if (tab_tetri[i])
-			free(tab_tetri[i]->code);
+		free(tab_tetri[i]->code);
 		free(tab_tetri[i]);
-		++i;
+		i++;
 	}
 	if (grid)
-		free(grid->array);
+	{
+		if (grid->array)
+			free(grid->array);
+		free(grid);
+	}
 	free(grid);
 	ft_putendl("error");
 	exit(EXIT_FAILURE);
@@ -43,7 +44,7 @@ void		exit_error(t_tetri **tab_tetri, t_grid *grid)
 
 void		exit_usage(void)
 {
-	ft_putendl("usage: fillit file.fillit");
+	ft_putendl("usage: ./fillit <input_file>");
 	exit(EXIT_SUCCESS);
 }
 
@@ -68,7 +69,7 @@ static int	min_square(int nb_tetri)
 ** grid_size of 9 creates a 3*3 grid.
 */
 
-t_grid		*init_grid(int nb_tetri, t_tetri **tab_tetri)
+t_grid		*init_grid(int nb_tetri)
 {
 	t_grid	*grid;
 	int		i;
@@ -76,7 +77,7 @@ t_grid		*init_grid(int nb_tetri, t_tetri **tab_tetri)
 
 	if (!(grid = (t_grid*)malloc(sizeof(t_grid)))
 			|| !(grid->array = (char*)malloc(GRID_SIZE)))
-		exit_error(tab_tetri, grid);
+		exit_error(NULL, grid);
 	grid->square_side = min_square(nb_tetri);
 	i = 0;
 	y = 0;

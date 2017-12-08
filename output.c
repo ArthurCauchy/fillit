@@ -6,30 +6,11 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 14:15:16 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/02 18:02:25 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/08 14:17:25 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
-
-/*
-** Print all the grid, blocked chars too.
-*/
-
-void	print_grid(t_grid *grid)
-{
-	int i;
-
-	i = 0;
-	while (i < GRID_SIZE)
-	{
-		ft_putchar(grid->array[i]);
-		if (i != 0 && ((i + 1) % GRID_SIDE) == 0)
-			ft_putchar('\n');
-		++i;
-	}
-}
 
 /*
 ** Print only the best square containing all the tetri.
