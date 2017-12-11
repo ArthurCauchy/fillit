@@ -6,17 +6,17 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/08 15:27:44 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/11 12:18:10 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "libft/libft.h"
 
 # define GRID_SIDE 13
 # define GRID_SIZE (GRID_SIDE * GRID_SIDE)
