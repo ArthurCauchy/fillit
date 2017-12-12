@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:28:22 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/11 12:18:10 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/11 17:37:16 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 # define GRID_SIDE 13
 # define GRID_SIZE (GRID_SIDE * GRID_SIDE)
@@ -46,7 +46,7 @@ typedef struct	s_tetridata
 ** validate_tetri.c
 */
 
-char			*validate_tetri(char *buff);
+char			*check_tetri(char *buff);
 
 /*
 ** import.c

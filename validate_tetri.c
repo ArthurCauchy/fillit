@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 16:16:10 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/08 14:18:03 by arthur           ###   ########.fr       */
+/*   Updated: 2017/12/11 17:36:54 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ static int	find_end(char *buff, int start)
 ** buff is expected to be of size 20.
 */
 
-char		*validate_tetri(char *buff)
+char		*check_tetri(char *buff)
 {
 	int	start;
 	int	end;

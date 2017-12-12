@@ -6,11 +6,11 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/11 14:29:04 by acauchy          ###   ########.fr        #
+#    Updated: 2017/12/12 11:41:39 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re compile
+.PHONY: all clean fclean re compile debug
 
 NAME = fillit
 
@@ -29,7 +29,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 LIBFT_PATH = libft
-LIBFT_INCLUDE = -I$(LIBFT_PATH)
+LIBFT_INCLUDE = -iquote$(LIBFT_PATH)
 LIBFT = -L$(LIBFT_PATH) -lft
 
 all: compile
